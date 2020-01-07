@@ -17,10 +17,13 @@
     <div class="nav-subheader">FOLDERS</div>
 
     <div class="nav-item" *ngFor="let folder of folders">
-        <a class="nav-link" matRipple (click)="goToFolder(folder.title)"
+        <a class="nav-link auto-h" matRipple (click)="goToFolder(folder.title)"
             [routerLinkActive]="['active-class']" >
             <mat-icon class="nav-link-icon" *ngIf="folder.icon">{{folder.icon}}</mat-icon>
             <span>{{folder.title}}</span>
+            <span class="nav-link-badge inbox-badge" *ngIf="folder.title=='Inbox'">
+            {{unreadCount ? unreadCount : 0}}
+         </span>
         </a>
         <hr>
     </div>

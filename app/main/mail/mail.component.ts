@@ -46,6 +46,7 @@ export class MailComponent implements OnInit {
   ];
   mails:any;
   dialogRef: any;
+  unreadCount;
 
   constructor(public _matDialog: MatDialog,
               private indexDB: IndexeddbService,
@@ -53,6 +54,7 @@ export class MailComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
+    this.indexDB.currentUnreadCount.subscribe(status => this.unreadCount = status);
       console.log(window.location.href);
       let type:any = (window.location.href).split('/');
       console.log(type[type.length-1])
