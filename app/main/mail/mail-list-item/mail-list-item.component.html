@@ -1,0 +1,43 @@
+<div fxLayout="row" fxLayoutAlign="start center">
+
+  <mat-checkbox [checked]="mail.selected"
+  (click)="onSelectedChange();$event.stopPropagation();"></mat-checkbox>
+
+  <div class="info" fxFlex FlexLayout="column">
+
+      <div class="row-1" fxLayout="row" fxLayoutAlign="start center">
+
+          <div class="name" fxLayout="row" fxLayoutAlign="start center" fxFlex>
+              <!-- <img class="avatar" *ngIf="mail.from?.avatar" alt="{{mail.from?.name}}" src="{{mail.from?.avatar}}"/> -->
+              <!-- <div class="avatar mat-accent-bg" *ngIf="!mail.from?.avatar">{{mail.from?.name[0]}}</div> -->
+              <span class="text-truncate" *ngIf="mail?.from">{{mail.from}}</span>
+              <!-- <mat-icon *ngIf="mail.hasAttachments">attachment</mat-icon> -->
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="start center">
+
+              <div class="time">{{mail.time | date : 'MMM d, y, h:mm a'}}</div>
+
+          </div>
+
+      </div>
+
+      <div class="row-2" fxLayout="row" fxLayoutAlign="start center">
+
+          <div fxLayout="column" fxLayoutAlign="start start">
+
+              <div class="subject text-truncate">
+                  {{mail.subject}}
+              </div>
+
+              <div class="message text-truncate" *ngIf="mail?.message">
+                  {{mail.message | slice:0:180}}{{mail.message.length > 180 ? '...' : ''}}
+              </div>
+              
+          </div>
+
+      </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,111 @@
+<div id="mail" class="page-layout carded left-sidebar inner-scroll">
+  <!-- SIDEBAR -->
+  <!-- SIDEBAR CONTENT -->
+  <div class="content" myPerfectScrollbar>
+
+  <div class="pt-24 pl-24 pr-24">
+    <button mat-raised-button
+            class="mat-accent compose-dialog-button w-100-p"
+            (click)="composeDialog()"
+            aria-label="Compose">
+        Compose Mail
+    </button>
+  </div>
+
+  <div class="nav">
+
+    <div class="nav-subheader">FOLDERS</div>
+
+    <div class="nav-item" *ngFor="let folder of folders">
+        <a class="nav-link" matRipple (click)="goToFolder(folder.title)"
+            [routerLinkActive]="['active-class']" >
+            <mat-icon class="nav-link-icon" *ngIf="folder.icon">{{folder.icon}}</mat-icon>
+            <span>{{folder.title}}</span>
+        </a>
+        <hr>
+    </div>
+
+    <div class="nav-subheader">CATEGORIES</div>
+
+    <div class="nav-item">
+      <a class="nav-link mb-8"><mat-icon class="nav-link-icon green-icon">fiber_manual_record</mat-icon>Work</a>
+      <a class="nav-link mb-8"><mat-icon class="nav-link-icon red-icon">fiber_manual_record</mat-icon>Documents</a>
+      <a class="nav-link mb-8"><mat-icon class="nav-link-icon blue-icon">fiber_manual_record</mat-icon>Social</a>
+      <a class="nav-link mb-8"><mat-icon class="nav-link-icon cyan-icon">fiber_manual_record</mat-icon>Advertising</a>
+      <a class="nav-link"><mat-icon class="nav-link-icon yellow-icon">fiber_manual_record</mat-icon>Clients</a>
+    </div>
+
+    <div class="nav-subheader">LABELS</div>
+
+    <div class="nav-item">
+        <a class="nav-link mb-8"><mat-icon class="nav-link-icon">label</mat-icon>Family</a>
+        <a class="nav-link mb-8"><mat-icon class="nav-link-icon">label</mat-icon>Work</a>
+        <a class="nav-link mb-8"><mat-icon class="nav-link-icon">label</mat-icon>Home</a>
+    </div>
+
+  </div>
+
+  </div>
+  <!-- / SIDEBAR CONTENT -->
+
+  <!-- CENTER -->
+  <div class="center">
+
+    <!-- CONTENT CARD -->
+    <div class="content-card mat-white-bg" [ngClass]="{'current-mail-selected':currentMail}">
+
+      <!-- CONTENT TOOLBAR -->
+      <div class="toolbar px-24 py-8">
+
+          <div *ngIf="mails && mails.length > 0" class="mail-selection" fxFlex="row" fxLayoutAlign="start center">
+              <!-- <mat-checkbox (click)="toggleSelectAll()" [checked]="hasSelectedMails"
+                            [indeterminate]="isIndeterminate"></mat-checkbox>
+
+              <button mat-icon-button [matMenuTriggerFor]="selectMenu">
+                  <mat-icon>arrow_drop_down</mat-icon>
+              </button>
+              <mat-menu #selectMenu="matMenu">
+                  <button mat-menu-item (click)="selectMails()">All</button>
+                  <button mat-menu-item (click)="deselectMails()">None</button>
+                  <button mat-menu-item (click)="selectMails('read', true)">Read</button>
+              </mat-menu> -->
+
+              <!-- <div class="toolbar-separator" *ngIf="hasSelectedMails"></div> -->
+
+              <button mat-icon-button (click)="deleteMails()">
+                  <mat-icon class="secondary-text" matTooltip="Delete selected mails">delete</mat-icon>
+              </button>
+
+          </div>
+
+          <div *ngIf="currentMail" fxHide.gt-xs>
+              <button mat-icon-button (click)="deselectCurrentMail()">
+                  <mat-icon class="secondary-text">arrow_back</mat-icon>
+              </button>
+          </div>
+      </div>
+      <!-- / CONTENT TOOLBAR -->
+
+      <!-- CONTENT -->
+      <div class="content" fxLayout="row">
+
+          <!-- Mail list item -->
+          <div class="mail-list">
+            <h3 *ngIf="mails && mails.length == 0" class="noMessage">You have no messages to read!</h3>
+            <mail-list-item matRipple *ngFor="let mail of mails" [mail]="mail" (click)="readMail(mail)"
+            [ngClass]="{'mat-accent-50-bg' : mail.read == 'false', 'mat-white-bg' : mail.read == 'true'}">
+            </mail-list-item>
+          </div>
+          <!-- / Mail list item -->
+          
+
+      </div>
+      <!-- / CONTENT -->
+      
+
+  </div>
+  <!-- / CONTENT CARD -->
+
+  </div>
+  <!-- / SIDEBAR -->
+</div>

@@ -1,0 +1,48 @@
+<mat-toolbar class="p-0 mat-elevation-z1">
+
+    <div fxFlex fxFill fxLayout="row" fxLayoutAlign="start center">
+
+        <div style="width: 85%" fxLayout="row" fxLayoutAlign="start center">
+
+            <button mat-icon-button class="navbar-toggle-button"
+                    (click)="toggleSidebarOpen('navbar')" >
+                <mat-icon class="secondary-text">menu</mat-icon>
+            </button>
+
+            <div class="toolbar-separator" *ngIf="!hiddenNavbar && !rightNavbar"></div>
+
+            <!-- <my-search-bar (input)="search($event)"></my-search-bar> -->
+
+        </div>
+
+        <div class="" fxFlex="0 1 auto" fxLayout="row">
+
+            <button mat-icon-button>
+                    <mat-icon matBadge="{{unreadCount ? unreadCount : 0}}" matBadgeColor="warn">email</mat-icon>
+            </button>
+
+            <div class="toolbar-separator" fxHide fxShow.gt-xs></div>
+
+            <!-- <button mat-icon-button>
+                    <mat-icon matBadge="15" matBadgeColor="warn">notifications</mat-icon>
+            </button> -->
+
+            <button mat-icon-button (click)="logout()" class="logout-button">
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Logout</span>
+            </button>
+
+            <div class="toolbar-separator" fxHide fxShow.gt-xs></div>
+
+            <div class="toolbar-separator" *ngIf="!hiddenNavbar && rightNavbar" fxHide fxShow.gt-xs></div>
+
+            <button mat-icon-button class="navbar-toggle-button"
+                    *ngIf="!hiddenNavbar && rightNavbar" (click)="toggleSidebarOpen('navbar')" fxHide.gt-md>
+                <mat-icon class="secondary-text">menu</mat-icon>
+            </button>
+
+        </div>
+
+    </div>
+
+</mat-toolbar>

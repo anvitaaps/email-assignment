@@ -1,0 +1,45 @@
+.mail-list {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.nav .nav-item .nav-link {
+    height: 15px;
+}
+
+hr {
+    background-color: lightgrey;
+    height: 1px;
+    border: 0;
+}
+
+.green-icon {
+    color: green;
+}
+
+.red-icon {
+    color: red;
+}
+
+.blue-icon {
+    color: #0000d9;
+}
+
+.cyan-icon {
+    color: #00cccc;
+}
+
+.yellow-icon {
+    color: #ffcc13;
+}
+
+.noMessage {
+    text-align: center;
+    color: lightgrey;
+}
+
+.active-mail {
+    font-weight: bolder;
+}

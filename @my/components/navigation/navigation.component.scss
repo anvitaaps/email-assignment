@@ -1,0 +1,12 @@
+@import 'src/@my/scss/my';
+
+my-navigation {
+    display: flex;
+    flex: 1 0 auto;
+
+    > .nav {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+}

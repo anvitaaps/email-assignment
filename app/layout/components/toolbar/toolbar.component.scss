@@ -1,0 +1,59 @@
+@import "src/@my/scss/my";
+
+:host {
+    position: relative;
+    display: flex;
+    flex: 0 0 auto;
+    z-index: 4;
+
+    &.below {
+        z-index: 2;
+    }
+
+    .mat-toolbar {
+        position: relative;
+        background: inherit;
+        color: inherit;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+
+        .logo-icon {
+            width: 38px;
+        }
+    }
+
+    .user-button,
+    my-search-bar,
+    .language-button,
+    .chat-panel-toggle-button,
+
+    .navbar-toggle-button {
+        min-width: 56px;
+        height: 56px;
+    }
+
+    .badge-icon {
+        margin-right: 2%;
+    }
+}
+
+button {
+    cursor: pointer;
+    font-size: 16px;
+}
+
+mat-icon, mat-badge {
+    font-size:20px;
+}
+
+.logout-button {
+    margin-left: 12%;
+}
+
+.mat-icon-button .mat-button-wrapper {
+    display: flex;
+    justify-content: center;
+  }

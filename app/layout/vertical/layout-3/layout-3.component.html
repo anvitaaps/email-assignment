@@ -1,0 +1,93 @@
+<!-- SIDE PANEL -->
+<ng-container *ngIf="!myConfig.layout.sidepanel.hidden && myConfig.layout.sidepanel.position === 'left'">
+
+    <!-- PANEL CONTENT -->
+
+</ng-container>
+<!-- / SIDE PANEL -->
+
+<div id="main">
+
+    <!-- TOOLBAR: Above fixed -->
+    <ng-container *ngIf="myConfig.layout.toolbar.position === 'above-fixed'">
+        <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+    </ng-container>
+    <!-- / TOOLBAR: Above fixed -->
+
+    <div id="container-1" class="container" myPerfectScrollbar
+         [myPerfectScrollbarOptions]="{suppressScrollX: true, updateOnRouteChange : true}">
+
+        <!-- TOOLBAR: Above static -->
+        <ng-container *ngIf="myConfig.layout.toolbar.position === 'above-static'">
+            <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+        </ng-container>
+        <!-- / TOOLBAR: Above static -->
+
+        <div id="container-2" class="container">
+
+            <!-- NAVBAR: Left -->
+            <ng-container *ngIf="myConfig.layout.navbar.position === 'left'">
+                <ng-container *ngTemplateOutlet="leftNavbar"></ng-container>
+            </ng-container>
+            <!-- / NAVBAR: Left -->
+
+            <!-- CONTENT -->
+            <content
+                [ngClass]="{'ml-32':myConfig.layout.navbar.position === 'left', 'mr-32':myConfig.layout.navbar.position === 'right'}">
+            </content>
+            <!-- / CONTENT -->
+
+            <!-- NAVBAR: Right -->
+            <ng-container *ngIf="myConfig.layout.navbar.position === 'right'">
+                <ng-container *ngTemplateOutlet="rightNavbar"></ng-container>
+            </ng-container>
+            <!-- / NAVBAR: Right -->
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- SIDE PANEL -->
+<ng-container *ngIf="!myConfig.layout.sidepanel.hidden && myConfig.layout.sidepanel.position === 'right'">
+
+    <!-- PANEL CONTENT -->
+
+</ng-container>
+<!-- / SIDE PANEL -->
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- @ PARTIALS
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+<!-- TOOLBAR -->
+<ng-template #toolbar>
+    <toolbar *ngIf="!myConfig.layout.toolbar.hidden"
+             [ngClass]="[myConfig.layout.toolbar.position, myConfig.layout.toolbar.background]"></toolbar>
+</ng-template>
+<!-- / TOOLBAR -->
+
+<!-- LEFT NAVBAR -->
+<ng-template #leftNavbar>
+    <my-sidebar name="navbar" class="navbar-my-sidebar"
+                  [folded]="myConfig.layout.navbar.folded"
+                  lockedOpen="gt-md"
+                  *ngIf="!myConfig.layout.navbar.hidden">
+        <navbar [variant]="myConfig.layout.navbar.variant"
+                class="left-navbar" [ngClass]="myConfig.layout.navbar.background"></navbar>
+    </my-sidebar>
+</ng-template>
+<!-- / LEFT NAVBAR -->
+
+<!-- RIGHT NAVBAR -->
+<ng-template #rightNavbar>
+    <my-sidebar name="navbar" position="right" class="navbar-my-sidebar"
+                  [folded]="myConfig.layout.navbar.folded"
+                  lockedOpen="gt-md"
+                  *ngIf="!myConfig.layout.navbar.hidden">
+        <navbar [variant]="myConfig.layout.navbar.variant"
+                class="right-navbar" [ngClass]="myConfig.layout.navbar.background"></navbar>
+    </my-sidebar>
+</ng-template>
+<!-- / RIGHT NAVBAR -->
